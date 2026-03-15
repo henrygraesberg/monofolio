@@ -1,15 +1,15 @@
 import { DBHandle } from "@henrygraesberg/portfolio-db";
-import { Experience } from "./experience-types";
-import { ExperienceRepository } from "./experience-repository";
+import { Project } from "./project-types";
+import { ProjectRepository } from "./project-repository";
 
-export interface ExperienceService {
-	findMany(handle: DBHandle): Promise<Experience[]>
+export interface ProjectService {
+	findMany(handle: DBHandle): Promise<Project[]>
 }
 
-export const getExperienceService = (experienceRepository: ExperienceRepository): ExperienceService => {
+export const getProjectService = (projectRepository: ProjectRepository): ProjectService => {
 	return {
 		async findMany(handle) {
-			return experienceRepository.findMany(handle)
+			return projectRepository.findMany(handle)
 		}
 	}
 }

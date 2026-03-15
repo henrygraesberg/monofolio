@@ -4,7 +4,7 @@ import { procedure, router } from "../../trpc"
 const findExperienceProcedure = procedure
 	.use(withDatabaseTransaction())
 	.query(async ({ ctx }) => {
-		const items = ctx.ExperienceService.findMany(ctx.handle)
+		const items = ctx.experienceService.findMany(ctx.handle)
 
 		return items
 	})

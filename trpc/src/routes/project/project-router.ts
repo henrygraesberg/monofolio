@@ -1,14 +1,14 @@
 import { withDatabaseTransaction } from "../../middleware"
 import { procedure, router } from "../../trpc"
 
-const findExperienceProcedure = procedure
+const findProjectsProcedure = procedure
 	.use(withDatabaseTransaction())
 	.query(async ({ ctx }) => {
-		const items = ctx.ExperienceService.findMany(ctx.handle)
+		const items = ctx.projectService.findMany(ctx.handle)
 
 		return items
 	})
 
-export const experienceRouter = router({
-	findMany: findExperienceProcedure
+export const projectRouter = router({
+	findMany: findProjectsProcedure
 })
