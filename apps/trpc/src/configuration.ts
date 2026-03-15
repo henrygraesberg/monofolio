@@ -4,8 +4,6 @@ type Environment = {
 }
 
 const requireConfig = (name: keyof Environment, value: string | undefined) => {
-  console.log(value)
-
   if (!value) {
     throw new Error(`Missing required environment variable: ${name}`)
   }
