@@ -5,12 +5,12 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/db/generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 generator zod {
   provider         = "zod-prisma-types"
-  output           = "../src/db/schemas"
+  output           = "../src/schemas"
   prismaClientPath = "../generated/prisma"
 
   useMultipleFiles = false
@@ -29,8 +29,8 @@ model Experience {
   @@map("experience")
 }
 
-model Projects {
+model Project {
   id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
 
-  @@map("projects")
+  @@map("project")
 }
