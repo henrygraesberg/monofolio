@@ -1,4 +1,4 @@
-import { schemas } from "@henrygraesberg/portfolio-db/schemas"
+import { schemas } from "../../../../db/src/schemas"
 import * as z from "zod"
 
 export const ExperienceSchema = schemas.ExperienceSchema.extend({})

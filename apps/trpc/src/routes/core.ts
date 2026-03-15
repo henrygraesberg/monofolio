@@ -1,4 +1,4 @@
-import { createPrisma } from "@henrygraesberg/portfolio-db"
+import { createPrisma } from "../../../db/src"
 import type { Configuration } from "../configuration"
 import { getExperienceRepository } from "./experience/experience-repository"
 import { getExperienceService } from "./experience/experience-service"

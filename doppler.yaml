@@ -1,7 +1,7 @@
 setup:
   - project: portfolio-trpc
     config: dev_personal
-    path: trpc
+    path: apps/trpc
   - project: portfolio-db
     config: dev_personal
-    path: db
+    path: apps/db

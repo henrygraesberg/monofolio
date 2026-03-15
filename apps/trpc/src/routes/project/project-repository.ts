@@ -1,4 +1,4 @@
-import { DBHandle } from "@henrygraesberg/portfolio-db";
+import { DBHandle } from "../../../../db/src";
 import { Project } from "./project-types";
 
 export interface ProjectRepository {

@@ -1,5 +1,5 @@
-import type { DBHandle } from "@henrygraesberg/portfolio-db"
-import type { Prisma } from "@henrygraesberg/portfolio-db"
+import type { DBHandle } from "../../db/src"
+import type { Prisma } from "../../db/src"
 import type * as trpc from "@trpc/server/unstable-core-do-not-import"
 import type { TrpcContext } from "./trpc"
 
