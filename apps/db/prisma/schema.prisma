@@ -23,14 +23,53 @@ datasource db {
   provider = "postgresql"
 }
 
+model Education {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  degree    String
+  schoolId  String    @map("school_id") @db.Uuid
+  school    School    @relation(fields: [schoolId], references: [id])
+  startTime DateTime  @map("start_time") @db.Date
+  endTime   DateTime? @map("end_time") @db.Date
+
+  @@map("education")
+}
+
+model School {
+  id         String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  schoolName String @map("school_name")
+  location   String
+
+  degreesAt Education[]
+
+  @@map("schoool")
+}
+
 model Experience {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title      String
+  employerId String    @map("employer_id") @db.Uuid
+  employer   Employer  @relation(fields: [employerId], references: [id])
+  startTime  DateTime  @map("start_time") @db.Date
+  endTime    DateTime? @map("end_time") @db.Date
 
   @@map("experience")
 }
 
+model Employer {
+  id            String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name          String
+  experiencesAt Experience[]
+
+  @@map("employer")
+}
+
 model Project {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title             String
+  url               String?
+  shorthandUrl      String? @map("shorthand_url")
+  sourceControlLink String? @map("source_control_link")
+  imageUrl          String? @map("image_url")
 
   @@map("project")
 }

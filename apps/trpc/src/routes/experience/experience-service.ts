@@ -1,4 +1,4 @@
-import { DBHandle } from "../../../../db/src";
+import { DBHandle } from "@henrygraesberg/portfolio-db";
 import { Experience } from "./experience-types";
 import { ExperienceRepository } from "./experience-repository";
 

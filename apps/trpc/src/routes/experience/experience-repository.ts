@@ -1,4 +1,4 @@
-import { DBHandle } from "../../../../db/src";
+import { DBHandle } from "@henrygraesberg/portfolio-db";
 import { Experience } from "./experience-types";
 
 export interface ExperienceRepository {
@@ -8,7 +8,14 @@ export interface ExperienceRepository {
 export const getExperienceRepository = (): ExperienceRepository => {
 	return {
 		async findMany(handle) {
-			const experience = await handle.experience.findMany()
+			const experience = await handle.experience.findMany({
+				include: { employer: true },
+				orderBy: [
+					{ endTime: "desc" },
+					{ employerId: "asc" },
+					{ startTime: "desc" }
+				]
+			})
 
 			return experience
 		}
