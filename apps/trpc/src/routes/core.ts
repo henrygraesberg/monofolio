@@ -1,5 +1,7 @@
 import { createPrisma } from "../../../db/src"
 import type { Configuration } from "../configuration"
+import { getEducationRepository } from "./education/education-repository"
+import { getEducationService } from "./education/education-service"
 import { getExperienceRepository } from "./experience/experience-repository"
 import { getExperienceService } from "./experience/experience-service"
 import { getProjectRepository } from "./project/project-repository"
@@ -15,12 +17,15 @@ export function createThirdPartyClients(configuration: Configuration) {
 export async function createServiceLayer(clients: ReturnType<typeof createThirdPartyClients>) {
 	const experienceRepository = getExperienceRepository()
   const projectRepository = getProjectRepository()
+  const educationRepository = getEducationRepository()
 	const experienceService = getExperienceService(experienceRepository)
   const projectService = getProjectService(projectRepository)
+  const educationService = getEducationService(educationRepository)
 
   return {
 		experienceService,
     projectService,
+    educationService,
     executeTransaction: clients.prisma.$transaction.bind(clients.prisma),
     prisma: clients.prisma,
   }
