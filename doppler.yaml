@@ -1,0 +1,7 @@
+setup:
+  - project: portfolio-trpc
+    config: dev_personal
+    path: trpc
+  - project: portfolio-db
+    config: dev_personal
+    path: db

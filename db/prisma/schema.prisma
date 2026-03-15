@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/db/generated/prisma"
+}
+
+generator zod {
+  provider         = "zod-prisma-types"
+  output           = "../src/db/schemas"
+  prismaClientPath = "../generated/prisma"
+
+  useMultipleFiles = false
+  createInputTypes = false
+  addIncludeType   = false
+  addSelectType    = false
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Experience {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  @@map("experience")
+}
+
+model Projects {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  @@map("projects")
+}
