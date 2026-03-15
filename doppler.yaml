@@ -5,3 +5,6 @@ setup:
   - project: portfolio-db
     config: dev_personal
     path: apps/db
+  - project: portfolio-infra
+    config: dev_personal
+    path: infra
