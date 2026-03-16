@@ -1,4 +1,5 @@
 import { Auth0Provider } from "@auth0/auth0-react"
+import { MantineProvider } from "@mantine/core"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import type { PropsWithChildren } from "react"
 import { env } from "@/lib/env"
@@ -16,6 +17,8 @@ export const AppProviders = ({ children }: PropsWithChildren) => (
     }}
     cacheLocation="localstorage"
   >
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <MantineProvider>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </MantineProvider>
   </Auth0Provider>
 )

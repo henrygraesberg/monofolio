@@ -45,12 +45,13 @@ model School {
 }
 
 model Experience {
-  id         String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  title      String
-  employerId String    @map("employer_id") @db.Uuid
-  employer   Employer  @relation(fields: [employerId], references: [id])
-  startTime  DateTime  @map("start_time") @db.Date
-  endTime    DateTime? @map("end_time") @db.Date
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title       String
+  employerId  String    @map("employer_id") @db.Uuid
+  employer    Employer  @relation(fields: [employerId], references: [id])
+  startTime   DateTime  @map("start_time") @db.Date
+  endTime     DateTime? @map("end_time") @db.Date
+  description String    @default("")
 
   @@map("experience")
 }

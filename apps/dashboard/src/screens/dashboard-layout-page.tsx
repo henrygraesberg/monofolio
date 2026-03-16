@@ -22,7 +22,7 @@ const DashboardFrame = () => {
     <main className="mx-auto my-6 grid w-[min(1260px,calc(100%-2rem))] grid-cols-1 gap-4 lg:grid-cols-[260px_minmax(0,1fr)]">
       <aside className="grid h-fit content-start gap-4 rounded-panel border border-line bg-surface p-4 lg:sticky lg:top-4">
         <div className="grid gap-2">
-          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brandSoft">Monofolio Admin</p>
+          <p className="text-xs font-bold uppercase tracking-[0.08em] text-brandSoft">Portfolio Admin</p>
           <h2>Dashboard</h2>
         </div>
         <nav className="grid gap-1.5">

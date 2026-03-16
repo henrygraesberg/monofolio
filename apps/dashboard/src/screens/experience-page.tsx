@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useAdminSession } from "@/components/admin-guard"
 import { ResourceCreateModal, ResourceListCard, ResourceScreen } from "@/components/dashboard/resource-screen"
 import { Input } from "@/components/ui/input"
+import { RichTextEditor } from "@/components/ui/rich-text-editor"
 import { queryKeys } from "@/lib/query-keys"
 import { dashboardMutations, dashboardQueries } from "@/lib/trpc-client"
 
@@ -14,7 +15,7 @@ export const ExperiencePage = () => {
   const { trpcClient } = useAdminSession()
   const queryClient = useQueryClient()
   const [isCreateOpen, setIsCreateOpen] = useState(false)
-  const createForm = useForm({ defaultValues: { title: "", employerId: "", startTime: "", endTime: "" } })
+  const createForm = useForm({ defaultValues: { title: "", employerId: "", startTime: "", endTime: "", description: "" } })
 
   const experienceQuery = useQuery({ queryKey: queryKeys.dashboard.experience, queryFn: () => dashboardQueries.findExperience(trpcClient) })
   const employersQuery = useQuery({ queryKey: queryKeys.dashboard.employers, queryFn: () => dashboardQueries.findEmployers(trpcClient) })
@@ -26,6 +27,7 @@ export const ExperiencePage = () => {
         employerId: values.employerId,
         startTime: new Date(values.startTime),
         endTime: values.endTime ? new Date(values.endTime) : null,
+        description: values.description.trim(),
       }),
     onSuccess: async () => {
       await Promise.all([
@@ -48,6 +50,12 @@ export const ExperiencePage = () => {
               <strong>{item.title}</strong>
               <span className="text-sm text-textMuted">{item.employer.name}</span>
               <span className="text-sm text-textMuted">{formatDateRange(item.startTime, item.endTime)}</span>
+              {item.description ? (
+                <article
+                  className="max-w-none text-textMain [&_h1]:font-serif [&_h1]:text-2xl [&_h1]:my-2 [&_h2]:font-serif [&_h2]:text-xl [&_h2]:my-2 [&_p]:my-2 [&_ul]:list-disc [&_ol]:list-decimal [&_ul]:pl-6 [&_ol]:pl-6 [&_li]:my-1 [&_a]:text-brand [&_a]:underline"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
+              ) : null}
             </li>
           ))}
         </ul>
@@ -84,6 +92,9 @@ export const ExperiencePage = () => {
         </createForm.Field>
         <createForm.Field name="endTime">
           {(field) => <Input type="date" value={field.state.value} onChange={(event) => field.handleChange(event.target.value)} />}
+        </createForm.Field>
+        <createForm.Field name="description">
+          {(field) => <RichTextEditor value={field.state.value} onChange={(value) => field.handleChange(value)} />}
         </createForm.Field>
       </ResourceCreateModal>
     </ResourceScreen>
