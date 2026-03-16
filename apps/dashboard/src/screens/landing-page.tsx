@@ -1,20 +1,19 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { Link } from "@tanstack/react-router"
+import { getRouteApi, Link } from "@tanstack/react-router"
 import { LockKeyhole, ShieldCheck } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+
+const routeApi = getRouteApi("/")
 
 export const LandingPage = () => {
   const { isAuthenticated, isLoading, loginWithRedirect, logout, user } = useAuth0()
 
   return (
-    <main className="mx-auto my-10 grid w-[min(1120px,calc(100%-2.5rem))] gap-4">
-      <Card className="p-4">
-        <CardHeader>
+    <main className="py-10 grid gap-4 h-screen w-screen mx-4 place-content-center">
+      <Card className="w-[85vw] max-w-[55rem] h-min">
+        <CardHeader className="w-full flex justify-center">
           <CardTitle>Portfolio Dashboard</CardTitle>
-          <CardDescription>
-            Sign in with Auth0 and only admin users can access the management dashboard.
-          </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-3">
           {isAuthenticated ? (
@@ -34,7 +33,7 @@ export const LandingPage = () => {
               </div>
             </>
           ) : (
-            <Button disabled={isLoading} onClick={() => loginWithRedirect()}>
+            <Button className="w-full" disabled={isLoading} onClick={() => loginWithRedirect()}>
               <LockKeyhole size={16} />
               Log in with Auth0
             </Button>
