@@ -8,19 +8,19 @@ export const LandingPage = () => {
   const { isAuthenticated, isLoading, loginWithRedirect, logout, user } = useAuth0()
 
   return (
-    <main className="layout-shell">
-      <Card className="hero-card">
+    <main className="mx-auto my-10 grid w-[min(1120px,calc(100%-2.5rem))] gap-4">
+      <Card className="p-4">
         <CardHeader>
-          <CardTitle>Monofolio Dashboard</CardTitle>
+          <CardTitle>Portfolio Dashboard</CardTitle>
           <CardDescription>
             Sign in with Auth0 and only admin users can access the management dashboard.
           </CardDescription>
         </CardHeader>
-        <CardContent className="hero-actions">
+        <CardContent className="grid gap-3">
           {isAuthenticated ? (
             <>
-              <p className="muted">Signed in as {user?.email ?? user?.name ?? "Unknown user"}</p>
-              <div className="row-actions">
+              <p className="text-textMuted">Signed in as {user?.email ?? user?.name ?? "Unknown user"}</p>
+              <div className="flex flex-wrap items-center gap-2.5">
                 <Link to="/dashboard">
                   <Button>
                     <ShieldCheck size={16} />
