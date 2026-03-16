@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "dev": "pnpm -rc --parallel -F @henrygraesberg/portfolio-trpc exec doppler run pnpm run dev",
+    "dev": "pnpm -rc --parallel -F @henrygraesberg/portfolio-trpc -F @henrygraesberg/portfolio-dashboard exec doppler run pnpm run dev",
+    "dev:trpc": "pnpm -rc --parallel -F @henrygraesberg/portfolio-trpc exec doppler run pnpm run dev",
+    "dev:dashboard": "pnpm -rc --parallel -F @henrygraesberg/portfolio-dashboard exec doppler run pnpm run dev",
     "migrate": "pnpm run -F @henrygraesberg/portfolio-db migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

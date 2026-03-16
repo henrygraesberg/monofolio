@@ -8,3 +8,6 @@ setup:
   - project: portfolio-infra
     config: dev_personal
     path: infra
+  - project: portfolio-dashboard
+    config: dev_personal
+    path: apps/dashboard
