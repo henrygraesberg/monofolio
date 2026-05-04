@@ -1,76 +1,76 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
-generator client {
-  provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
-}
-
-generator zod {
-  provider         = "zod-prisma-types"
-  output           = "../src/schemas"
-  prismaClientPath = "../generated/prisma"
-
-  useMultipleFiles = false
-  createInputTypes = false
-  addIncludeType   = false
-  addSelectType    = false
-}
-
-datasource db {
-  provider = "postgresql"
-}
-
-model Education {
-  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  degree    String
-  schoolId  String    @map("school_id") @db.Uuid
-  school    School    @relation(fields: [schoolId], references: [id])
-  startTime DateTime  @map("start_time") @db.Date
-  endTime   DateTime? @map("end_time") @db.Date
-
-  @@map("education")
-}
-
-model School {
-  id         String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  schoolName String @map("school_name")
-  location   String
-
-  degreesAt Education[]
-
-  @@map("schoool")
-}
-
-model Experience {
-  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  title       String
-  employerId  String    @map("employer_id") @db.Uuid
-  employer    Employer  @relation(fields: [employerId], references: [id])
-  startTime   DateTime  @map("start_time") @db.Date
-  endTime     DateTime? @map("end_time") @db.Date
-  description String    @default("")
-
-  @@map("experience")
-}
-
-model Employer {
-  id            String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name          String
-  experiencesAt Experience[]
-
-  @@map("employer")
-}
-
-model Project {
-  id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  title             String
-  url               String?
-  shorthandUrl      String? @map("shorthand_url")
-  sourceControlLink String? @map("source_control_link")
-  imageUrl          String? @map("image_url")
-
-  @@map("project")
-}
+// 0001 | // This is your Prisma schema file,
+// 0002 | // learn more about it in the docs: https://pris.ly/d/prisma-schema
+// 0003 | 
+// 0004 | // Get a free hosted Postgres database in seconds: `npx create-db`
+// 0005 | 
+// 0006 | generator client {
+// 0007 |   provider = "prisma-client-js"
+// 0008 |   output   = "../src/generated/prisma"
+// 0009 | }
+// 0010 | 
+// 0011 | generator zod {
+// 0012 |   provider         = "zod-prisma-types"
+// 0013 |   output           = "../src/schemas"
+// 0014 |   prismaClientPath = "../generated/prisma"
+// 0015 | 
+// 0016 |   useMultipleFiles = false
+// 0017 |   createInputTypes = false
+// 0018 |   addIncludeType   = false
+// 0019 |   addSelectType    = false
+// 0020 | }
+// 0021 | 
+// 0022 | datasource db {
+// 0023 |   provider = "postgresql"
+// 0024 | }
+// 0025 | 
+// 0026 | model Education {
+// 0027 |   id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+// 0028 |   degree    String
+// 0029 |   schoolId  String    @map("school_id") @db.Uuid
+// 0030 |   school    School    @relation(fields: [schoolId], references: [id])
+// 0031 |   startTime DateTime  @map("start_time") @db.Date
+// 0032 |   endTime   DateTime? @map("end_time") @db.Date
+// 0033 | 
+// 0034 |   @@map("education")
+// 0035 | }
+// 0036 | 
+// 0037 | model School {
+// 0038 |   id         String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+// 0039 |   schoolName String @map("school_name")
+// 0040 |   location   String
+// 0041 | 
+// 0042 |   degreesAt Education[]
+// 0043 | 
+// 0044 |   @@map("schoool")
+// 0045 | }
+// 0046 | 
+// 0047 | model Experience {
+// 0048 |   id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+// 0049 |   title       String
+// 0050 |   employerId  String    @map("employer_id") @db.Uuid
+// 0051 |   employer    Employer  @relation(fields: [employerId], references: [id])
+// 0052 |   startTime   DateTime  @map("start_time") @db.Date
+// 0053 |   endTime     DateTime? @map("end_time") @db.Date
+// 0054 |   description String    @default("")
+// 0055 | 
+// 0056 |   @@map("experience")
+// 0057 | }
+// 0058 | 
+// 0059 | model Employer {
+// 0060 |   id            String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+// 0061 |   name          String
+// 0062 |   experiencesAt Experience[]
+// 0063 | 
+// 0064 |   @@map("employer")
+// 0065 | }
+// 0066 | 
+// 0067 | model Project {
+// 0068 |   id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+// 0069 |   title             String
+// 0070 |   url               String?
+// 0071 |   shorthandUrl      String? @map("shorthand_url")
+// 0072 |   sourceControlLink String? @map("source_control_link")
+// 0073 |   imageUrl          String? @map("image_url")
+// 0074 | 
+// 0075 |   @@map("project")
+// 0076 | }
