@@ -1,14 +1,14 @@
-@tailwind base;
-@tailwind utilities;
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at 20% 0%, color-mix(in srgb, #d8e6d6, transparent 35%) 0%, transparent 45%),
-    linear-gradient(170deg, #f4f1ea 0%, #edf3eb 100%);
-}
+// 0001 | @tailwind base;
+// 0002 | @tailwind utilities;
+// 0003 | 
+// 0004 | * {
+// 0005 |   box-sizing: border-box;
+// 0006 | }
+// 0007 | 
+// 0008 | body {
+// 0009 |   margin: 0;
+// 0010 |   min-height: 100vh;
+// 0011 |   background:
+// 0012 |     radial-gradient(circle at 20% 0%, color-mix(in srgb, #d8e6d6, transparent 35%) 0%, transparent 45%),
+// 0013 |     linear-gradient(170deg, #f4f1ea 0%, #edf3eb 100%);
+// 0014 | }

@@ -1,26 +1,26 @@
-import { withAdminAuthorization, withDatabaseTransaction } from "../../middleware"
-import { procedure, router } from "../../trpc"
-import { CreateEmployerSchema } from "./employer-types"
-
-const findEmployersProcedure = procedure
-	.use(withDatabaseTransaction())
-	.query(async ({ ctx }) => {
-		const items = ctx.employerService.findMany(ctx.handle)
-
-		return items
-	})
-
-const createEmployerProcedure = procedure
-	.input(CreateEmployerSchema)
-	.use(withAdminAuthorization())
-	.use(withDatabaseTransaction())
-	.query(async ({ input, ctx }) => {
-		const created = ctx.employerService.create(ctx.handle, input)
-
-		return created
-	})
-
-export const employerRouter = router({
-	findMany: findEmployersProcedure,
-	create: createEmployerProcedure
-})
+// 0001 | import { withAdminAuthorization, withDatabaseTransaction } from "../../middleware"
+// 0002 | import { procedure, router } from "../../trpc"
+// 0003 | import { CreateEmployerSchema } from "./employer-types"
+// 0004 | 
+// 0005 | const findEmployersProcedure = procedure
+// 0006 | 	.use(withDatabaseTransaction())
+// 0007 | 	.query(async ({ ctx }) => {
+// 0008 | 		const items = ctx.employerService.findMany(ctx.handle)
+// 0009 | 
+// 0010 | 		return items
+// 0011 | 	})
+// 0012 | 
+// 0013 | const createEmployerProcedure = procedure
+// 0014 | 	.input(CreateEmployerSchema)
+// 0015 | 	.use(withAdminAuthorization())
+// 0016 | 	.use(withDatabaseTransaction())
+// 0017 | 	.query(async ({ input, ctx }) => {
+// 0018 | 		const created = ctx.employerService.create(ctx.handle, input)
+// 0019 | 
+// 0020 | 		return created
+// 0021 | 	})
+// 0022 | 
+// 0023 | export const employerRouter = router({
+// 0024 | 	findMany: findEmployersProcedure,
+// 0025 | 	create: createEmployerProcedure
+// 0026 | })
